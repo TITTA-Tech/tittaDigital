@@ -1,20 +1,24 @@
-import React from "react";
+import {Suspense, lazy} from 'react';
+import {Routes, Route} from "react-router-dom"
 import Navbar from "./components/Navbar";
-import Header from "./components/header";
-import Welcome from "./components/welcome";
-import Services from "./components/services";
-import Process from "./components/process";
-import Testimonial from "./components/testimonial";
-function App(){
-    return(
-        <div>
-            <Navbar />
-            <Header />
-            <Welcome />
-            <Services />
-            <Process />
-            <Testimonial />
-        </div>
-    )
-};
+
+//pages
+const Index = lazy(() => import("./pages"));
+
+function App() {
+  return (
+    <div className="px-5 md:px-10 pt-2 ">
+      <Navbar />
+        <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+                <Route index element={<Index />}/>
+            </Routes>
+        </Suspense>
+    </div>
+  )
+  }
+
 export default App
+
+
+// px-5 phones screens/////sm:pc screen

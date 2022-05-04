@@ -4,6 +4,9 @@ content: [
   ],
   theme: {
     extend: {
+      colors:{
+        primary: "#0071BC"
+      }
     },
   },
   plugins: [],
